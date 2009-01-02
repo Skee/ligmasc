@@ -1,0 +1,32 @@
+ligmasc
+=======
+
+my tiny lighttpd management scripts
+
+they manage simple vhosts, with per-vhost configs and php-cgi sockets.
+
+TODO:
+* don't hardcode locations
+* django and rails sockets
+* spawn fastcgi process
+* integrate with init scripts
+
+INSTALL:
+ - cp -R addvhost.sh listvhosts.sh skel /your/simple/vhost/path
+ - edit addvhost.sh and listvhosts.sh, use /your/simple/vhost/path
+ - add the following to your lighttpd.conf: include_shell "sh /your/simple/vhost/path/listvhosts.sh"
+ - edit skel/lighty.conf.in with some sensible defaults
+
+USAGE:
+cd /your/simple/vhost/path && ./addvhost.sh <hostname>
+ - copies skel, parses infiles with sed and sets hostname
+
+
+listvhosts.sh is used only from inside lighttpd.conf
+
+/* This program is free software. It comes without any warranty, to
+ * the extent permitted by applicable law. You can redistribute it
+ * and/or modify it under the terms of the Do What The Fuck You Want
+ * To Public License, Version 2, as published by Sam Hocevar. See
+ * http://sam.zoy.org/wtfpl/COPYING for more details. */
+

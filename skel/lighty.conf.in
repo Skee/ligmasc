@@ -1,0 +1,31 @@
+fastcgi.server             = ( ".php" =>
+                               ( "localhost" =>
+                                 (
+                                   "socket" => "/tmp/--vhost---php-fastcgi.socket",
+                                   "bin-path" => "/usr/bin/php-cgi -d open_basedir=/srv/http/vhosts/--vhost--/:/usr/share/pear/ -d session.save_path=/srv/http/vhosts/--vhost--/sessions/ -d disable_functions=shell,symlink,ini_restore,imap_body,imap_list,imap_open,mysql_list_dbs,popen,stream_select,socket_select,socket_create,socket_create_listen,socket_create_pair,socket_listen,socket_accept,socket_bind,socket_strerror,readlink,symlink,link,pfsockopen,ini_alter,dl,openlog,syslog,putenv,pcntl_exec,pcntl_fork,pcntl_signal,pcntl_waitpid,pcntl_wexitstatus,pcntl_wifexited,pcntl_wifsignaled,pcntl_wifstopped,pcntl_wstopsig,pcntl_wtermsig,fpassthru,detcwd,system,passthru,exec,proc_close,proc_get_status,proc_nice,proc_open,proc_terminate,shell_exec"
+                                 )
+                               )
+                            )
+
+
+## django fcgi sans autospawn
+#
+#fastcgi.server = (
+#    "/dispatch.fcgi" => (
+#       "main" => (
+#           "socket" => "/tmp/--vhost---django-fastcgi.socket",
+#           "check-local" => "disable",
+#       )
+#    ),
+#)
+#
+#alias.url = (
+#    "/media/" => "/srv/http/vhosts/--vhost--/htdocs/media/",
+#)
+#
+#url.rewrite-once = (
+#    "^(/media.*)$" => "$1",
+#    "^/favicon\.ico$" => "/media/favicon.ico",
+#    "^(/.*)$" => "/dispatch.fcgi$1",
+#)
+
